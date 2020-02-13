@@ -1,4 +1,5 @@
 import Firebase from './Firebase';
-import Search from './Search';
+import JahCard from './JahCard'
+import JahSearch from './JahSearch';
 
-export { Firebase, Search };
+export { Firebase, JahCard, JahSearch };

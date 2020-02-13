@@ -1,5 +1,6 @@
 import Dashboard from './Dashboard';
-import NotFound from './NotFound';
 import Layout from './Layout';
+import NotFound from './NotFound';
+import TvMaze from './TvMaze';
 
-export { Dashboard, Layout, NotFound };
+export { Dashboard, Layout, NotFound, TvMaze };

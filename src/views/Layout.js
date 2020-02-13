@@ -24,6 +24,7 @@ import {
   Menu as MenuIcon,
   NotificationsNone as NotificationsNoneIcon,
   PeopleOutline as PeopleOutlineIcon,
+  Tv as TvIcon
 } from '@material-ui/icons';
 
 const drawerWidth = 240;
@@ -84,6 +85,7 @@ const Layout = props => {
 
   const pages = [
     { title: 'Dashboard', path: '/dashboard', icon: <DashboardIcon /> },
+    { title: 'TV Maze', path: '/tv-maze', icon: <TvIcon /> },
     { title: 'Not Found', path: '/not-found', icon: <ErrorOutlineIcon /> }
   ];
 
@@ -109,8 +111,8 @@ const Layout = props => {
         </Toolbar>
       </AppBar>
       <Drawer
-        className={clsx(classes.drawer, { [classes.drawerOpen]: open, [classes.drawerClose]: !open })}
         classes={{ paper: clsx({ [classes.drawerOpen]: open, [classes.drawerClose]: !open }) }}
+        className={clsx(classes.drawer, { [classes.drawerOpen]: open, [classes.drawerClose]: !open })}
         open={open}
         variant="permanent">
         <List className={classes.list}>

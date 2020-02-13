@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 const Search = () => {
   const classes = useStyles();
   return (
-    <Paper className={classes.root} component="form">
+    <Paper className={classes.root}>
       <InputBase
         className={classes.input}
         inputProps={{ 'aria-label': 'search google maps' }}
