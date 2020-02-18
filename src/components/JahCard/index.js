@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo, useState } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import {
@@ -38,10 +38,10 @@ const useStyles = makeStyles(theme => ({
   avatar: { backgroundColor: red[500] },
 }));
 
-const JahCard = props => {
+const JahCard = memo(function JahCardMemo (props) {
   const { data } = props;
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
+  const [expanded, setExpanded] = useState(false);
   const handleExpandClick = () => setExpanded(!expanded);
   return (
     <Card className={classes.root}>
@@ -59,10 +59,16 @@ const JahCard = props => {
         subheader={data.airdate}
         title={data.season + ' x ' + data.number}
       />
-      {!data.image || (
+      {data.image ? (
         <CardMedia
           className={classes.media}
           image={data.image.original}
+          title={data.name}
+        />
+      ) : (
+        <CardMedia
+          className={classes.media}
+          image="https://picsum.photos/200"
           title={data.name}
         />
       )}
@@ -97,7 +103,7 @@ const JahCard = props => {
       </Collapse>
     </Card>
   );
-}
+});
 
 JahCard.propTypes = {
   data: PropTypes.object

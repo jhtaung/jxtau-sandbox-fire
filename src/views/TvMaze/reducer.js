@@ -1,5 +1,10 @@
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'UPDATE_SEARCH':
+      return {
+        ...state,
+        search: action.payload
+      };
     case 'FETCH_INIT':
       return {
         ...state,

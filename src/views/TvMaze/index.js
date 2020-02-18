@@ -14,11 +14,14 @@ const useStyles = makeStyles(theme => ({
 const TvMaze = () => {
   const classes = useStyles();
   const state = useTvMazeState();
-  const { handleSubmit } = useTvMaze();
+  const { handleSearch, handleSubmit } = useTvMaze();
+
   return (
-    <form onSubmit={handleSubmit}>
-      <JahSearch />
-      {!state.data.length || <>found {state.data.length} results. </>}
+    <>
+      <form onSubmit={handleSubmit}>
+        <JahSearch handleChange={handleSearch} />
+        {!state.data.length || <>found {state.data.length} results. </>}
+      </form>
       <Divider className={classes.divider} />
       {!state.isError || <Paper className={classes.paper}>Search Error</Paper>}
       {state.isLoading ? (
@@ -38,7 +41,7 @@ const TvMaze = () => {
           )}
         </>
       )}
-    </form>
+    </>
   );
 };
 

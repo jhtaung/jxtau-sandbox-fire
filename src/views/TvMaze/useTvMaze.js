@@ -1,4 +1,4 @@
-import { useTvMazeDispatch } from './context';
+import { useTvMazeDispatch, useTvMazeState } from './context';
 import axios from 'axios';
 
 const askAPI = async param => {
@@ -43,6 +43,7 @@ const askAPI = async param => {
 
 const useTvMaze = () => {
   const dispatch = useTvMazeDispatch();
+  const state = useTvMazeState();
 
   const doQuery = async showName => {
     dispatch({ type: 'FETCH_INIT' });
@@ -62,12 +63,20 @@ const useTvMaze = () => {
     return true;
   };
 
-  const handleSubmit = e => {
+  const handleSearch = e => {
     e.preventDefault();
-    doQuery('rick-&-morty');
+    dispatch({ type: 'UPDATE_SEARCH', payload: e.target.value });
   };
 
-  return { dispatch, doQuery, handleSubmit };
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    console.log('search: ' + state.search);
+
+    doQuery(state.search);
+  };
+
+  return { dispatch, doQuery, handleSearch, handleSubmit };
 };
 
 export default useTvMaze;

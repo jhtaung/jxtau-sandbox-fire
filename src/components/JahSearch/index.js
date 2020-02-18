@@ -23,13 +23,15 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Search = () => {
+const Search = props => {
   const classes = useStyles();
+  const { handleChange } = props;
   return (
     <Paper className={classes.root}>
       <InputBase
         className={classes.input}
         inputProps={{ 'aria-label': 'search google maps' }}
+        onChange={handleChange}
         placeholder="Search" />
       <Divider className={classes.divider} orientation="vertical" />
       <IconButton aria-label="search" className={classes.iconButton} type="submit">
